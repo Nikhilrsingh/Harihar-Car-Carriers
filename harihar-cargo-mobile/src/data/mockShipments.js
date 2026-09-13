@@ -1,0 +1,32 @@
+export const MOCK_SHIPMENTS = [
+  {
+    id: 'HC-1001',
+    vehicleNumber: 'MH 31 FC 4821',
+    carModel: 'Hyundai Creta',
+    pickup: 'Nagpur Depot',
+    dropoff: 'Mumbai Kalamboli',
+    status: 'In Transit',
+    driverName: 'Ramesh Sharma',
+    estimatedDelivery: 'Today, 6:00 PM',
+  },
+  {
+    id: 'HC-1002',
+    vehicleNumber: 'MH 31 EQ 9012',
+    carModel: 'Tata Nexon',
+    pickup: 'Pune Chakan',
+    dropoff: 'Nagpur Central Hub',
+    status: 'Scheduled',
+    driverName: 'Suresh Verma',
+    estimatedDelivery: 'Tomorrow, 2:00 PM',
+  },
+  {
+    id: 'HC-1003',
+    vehicleNumber: 'MH 31 BK 3341',
+    carModel: 'Maruti Brezza',
+    pickup: 'Indore Bypass',
+    dropoff: 'Hyderabad Hub',
+    status: 'Delivered',
+    driverName: 'Ramesh Sharma',
+    estimatedDelivery: 'Delivered Yesterday',
+  },
+];

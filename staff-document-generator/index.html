@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+Harihar Cargo Carriers - Staff Document Generator
+</title>
+
+<!-- PDF LIBRARIES -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+</script>
+
+<!-- CSS -->
+
+<link
+rel="stylesheet"
+href="style.css"
+>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FORM
+===================================================== -->
+
+<div class="form-container">
+
+<h2>
+Staff / Employee Document Generator
+</h2>
+
+
+<div class="form-grid">
+
+
+<!-- EMPLOYEE NAME -->
+
+<div class="input-group">
+
+<label>
+Employee / Staff Name
+</label>
+
+<input
+type="text"
+id="employeeName"
+placeholder="Enter employee name"
+>
+
+</div>
+
+
+<!-- FATHER NAME -->
+
+<div class="input-group">
+
+<label>
+Father / Guardian Name
+</label>
+
+<input
+type="text"
+id="fatherName"
+placeholder="Enter father / guardian name"
+>
+
+</div>
+
+
+<!-- DATE OF BIRTH -->
+
+<div class="input-group">
+
+<label>
+Date of Birth
+</label>
+
+<input
+type="date"
+id="dob"
+>
+
+</div>
+
+
+<!-- MOBILE -->
+
+<div class="input-group">
+
+<label>
+Mobile Number
+</label>
+
+<input
+type="text"
+id="mobile"
+placeholder="Enter mobile number"
+>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="input-group full">
+
+<label>
+Residential Address
+</label>
+
+<textarea
+id="address"
+placeholder="Enter complete residential address"
+></textarea>
+
+</div>
+
+
+<!-- DESIGNATION -->
+
+<div class="input-group">
+
+<label>
+Designation
+</label>
+
+<input
+type="text"
+id="designation"
+placeholder="Driver / Staff / Helper / Other"
+>
+
+</div>
+
+
+<!-- DATE OF JOINING -->
+
+<div class="input-group">
+
+<label>
+Date of Joining
+</label>
+
+<input
+type="date"
+id="joiningDate"
+>
+
+</div>
+
+
+<!-- EMPLOYEE ID -->
+
+<div class="input-group">
+
+<label>
+Employee ID
+</label>
+
+<input
+type="text"
+id="employeeId"
+placeholder="Enter employee ID"
+>
+
+</div>
+
+
+<!-- VEHICLE -->
+
+<div class="input-group">
+
+<label>
+Vehicle / Lorry No.
+</label>
+
+<input
+type="text"
+id="vehicleNo"
+placeholder="If applicable"
+>
+
+</div>
+
+
+<!-- EMERGENCY CONTACT -->
+
+<div class="input-group">
+
+<label>
+Emergency Contact
+</label>
+
+<input
+type="text"
+id="emergencyContact"
+placeholder="Name and mobile number"
+>
+
+</div>
+
+
+<!-- DOCUMENT DATE -->
+
+<div class="input-group">
+
+<label>
+Document Date
+</label>
+
+<input
+type="date"
+id="documentDate"
+>
+
+</div>
+
+
+<!-- DOCUMENT NUMBER -->
+
+<div class="input-group">
+
+<label>
+Document No.
+</label>
+
+<input
+type="text"
+id="documentNo"
+placeholder="Enter document number"
+>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     BUTTONS
+===================================================== -->
+
+<div class="form-buttons">
+
+<button
+type="button"
+onclick="generateDocument()"
+>
+📄 Generate Document
+</button>
+
+
+<button
+type="button"
+onclick="downloadPDF()"
+>
+⬇️ Download PDF
+</button>
+
+
+<button
+type="button"
+onclick="printDocument()"
+>
+🖨️ Print
+</button>
+
+
+<button
+type="button"
+onclick="resetForm()"
+>
+🔄 Reset
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     DOCUMENT
+===================================================== -->
+
+<div id="document">
+
+
+<!-- HEADER -->
+
+<div class="document-header">
+
+
+<!-- LEFT LOGO -->
+
+<div class="left-logo">
+
+<img
+src="../assets/logo-left.png"
+alt="Company Logo"
+>
+
+</div>
+
+
+<!-- CENTER -->
+
+<div class="company-info">
+
+<div class="jurisdiction">
+
+SUBJECT TO NAGPUR JURISDICTION ONLY
+
+</div>
+
+
+<div class="company-name">
+
+HARIHAR CARGO CARRIERS
+
+</div>
+
+
+<div class="company-subtitle">
+
+FLEET OWNER & TRANSPORT CONTRACTOR
+
+</div>
+
+
+<div class="company-details">
+
+H.O: Plot No.19, Shivshakti Nagar,
+Opp Wadi Police Station,
+Amravati Road Nagpur 440023
+
+<br>
+
+Mob:
+<span class="blue">
+9372693389, 7972409656
+</span>
+
+<br>
+
+Email:
+<span class="blue">
+hariharcarcarrier@gmail.com
+</span>
+
+<br>
+
+GST No:
+<span class="gst">
+27AWOPR8730N2ZI
+</span>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT LOGO -->
+
+<div class="right-logo">
+
+<img
+src="../assets/right-logo.png"
+alt="Company Logo"
+>
+
+</div>
+
+</div>
+
+
+
+<!-- DOCUMENT TITLE -->
+
+<div class="document-title">
+
+STAFF / EMPLOYEE DECLARATION & UNDERTAKING
+
+</div>
+
+
+<!-- DOCUMENT INFO -->
+
+<div class="document-info">
+
+<div>
+
+<strong>
+Document No:
+</strong>
+
+<span id="previewDocumentNo">
+-
+</span>
+
+</div>
+
+
+<div>
+
+<strong>
+Date:
+</strong>
+
+<span id="previewDocumentDate">
+-
+</span>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     EMPLOYEE DETAILS
+===================================================== -->
+
+<div class="section-title">
+
+EMPLOYEE DETAILS
+
+</div>
+
+
+<table class="details-table">
+
+<tr>
+
+<th>
+Employee / Staff Name
+</th>
+
+<td id="previewEmployeeName">
+-
+</td>
+
+<th>
+Employee ID
+</th>
+
+<td id="previewEmployeeId">
+-
+</td>
+
+</tr>
+
+
+<tr>
+
+<th>
+Father / Guardian Name
+</th>
+
+<td id="previewFatherName">
+-
+</td>
+
+<th>
+Designation
+</th>
+
+<td id="previewDesignation">
+-
+</td>
+
+</tr>
+
+
+<tr>
+
+<th>
+Date of Birth
+</th>
+
+<td id="previewDob">
+-
+</td>
+
+<th>
+Date of Joining
+</th>
+
+<td id="previewJoiningDate">
+-
+</td>
+
+</tr>
+
+
+<tr>
+
+<th>
+Mobile Number
+</th>
+
+<td id="previewMobile">
+-
+</td>
+
+<th>
+Vehicle / Lorry No.
+</th>
+
+<td id="previewVehicleNo">
+-
+</td>
+
+</tr>
+
+
+<tr>
+
+<th>
+Emergency Contact
+</th>
+
+<td
+colspan="3"
+id="previewEmergencyContact"
+>
+-
+</td>
+
+</tr>
+
+
+<tr>
+
+<th>
+Residential Address
+</th>
+
+<td
+colspan="3"
+id="previewAddress"
+>
+-
+</td>
+
+</tr>
+
+</table>
+
+
+
+<!-- =====================================================
+     TERMS
+===================================================== -->
+
+<div class="section-title">
+
+TERMS & CONDITIONS / UNDERTAKING
+
+</div>
+
+
+<div class="terms">
+
+
+<p>
+1. I confirm that the information and documents provided by me
+to HARIHAR CARGO CARRIERS are true and correct to the best of
+my knowledge.
+</p>
+
+
+<p>
+2. I agree to perform my assigned duties honestly, carefully and
+responsibly and to follow all lawful instructions issued by the
+company / authorized person.
+</p>
+
+
+<p>
+3. I agree to properly handle and safeguard company vehicles,
+documents, goods, equipment, keys and other property entrusted
+to me during the course of my duties.
+</p>
+
+
+<p>
+4. I shall follow applicable traffic rules, transport regulations,
+safety instructions and company procedures while performing my
+duties.
+</p>
+
+
+<p>
+5. I shall not use any company vehicle, property, documents or
+resources for unauthorized personal purposes without prior
+permission from the company.
+</p>
+
+
+<p>
+6. I shall immediately inform the company / authorized person
+about any accident, damage, loss, theft, breakdown, dispute,
+misuse or other unusual incident relating to company work or
+property.
+</p>
+
+
+<p>
+7. If any loss or damage occurs due to my proven negligence,
+misconduct, unauthorized act, wilful violation of instructions or
+other unlawful act, I understand that the company may take
+appropriate action in accordance with applicable law and company
+policy.
+</p>
+
+
+<p>
+8. I understand that the company and its owner shall not be
+automatically responsible for consequences arising solely from my
+personal negligence, unauthorized acts, misconduct or violation
+of lawful instructions. Nothing in this undertaking is intended
+to exclude any responsibility that cannot legally be excluded.
+</p>
+
+
+<p>
+9. I shall maintain confidentiality regarding company information,
+customer information, vehicle information, transport documents,
+financial information and other business information obtained
+during my employment.
+</p>
+
+
+<p>
+10. I shall not create, alter, submit or use any company document,
+receipt, bill, LR, transport document or other record without
+proper authorization.
+</p>
+
+
+<p>
+11. I agree to return company property, documents, keys, devices
+and other materials entrusted to me whenever requested by the
+company or upon cessation of my duties.
+</p>
+
+
+<p>
+12. Any misconduct, fraud, theft, intentional damage,
+misrepresentation or unauthorized activity may result in
+appropriate disciplinary and/or legal action as applicable.
+</p>
+
+
+<p>
+13. I have read and understood the above terms and agree to comply
+with them during the period of my employment / engagement with
+HARIHAR CARGO CARRIERS.
+</p>
+
+</div>
+
+
+
+<!-- =====================================================
+     DECLARATION
+===================================================== -->
+
+<div class="section-title">
+
+EMPLOYEE DECLARATION
+
+</div>
+
+
+<div class="declaration">
+
+I hereby declare that I have read and understood this document,
+including the terms and conditions mentioned above. I accept the
+responsibilities associated with my assigned duties and agree to
+follow the lawful instructions, safety requirements and policies
+of HARIHAR CARGO CARRIERS.
+
+</div>
+
+
+
+<!-- =====================================================
+     SIGNATURES
+===================================================== -->
+
+<div class="signature-section">
+
+
+<div class="signature-box">
+
+<div class="signature-space">
+</div>
+
+<div class="signature-line">
+Employee / Staff Signature
+</div>
+
+<div class="signature-name">
+
+Name:
+<span id="signatureEmployeeName">
+________________
+</span>
+
+</div>
+
+</div>
+
+
+
+<div class="signature-box company-signature">
+
+<div class="signature-space">
+
+<img
+src="../assets/sign.png"
+alt="Authorized Signature"
+>
+
+</div>
+
+<div class="signature-line">
+
+For HARIHAR CARGO CARRIERS
+
+</div>
+
+<div class="signature-name">
+
+Authorized Signatory
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<div class="document-footer">
+
+HARIHAR CARGO CARRIERS |
+FLEET OWNER & TRANSPORT CONTRACTOR
+
+<br>
+
+Plot No.19, Shivshakti Nagar,
+Opp Wadi Police Station,
+Amravati Road Nagpur 440023
+
+<br>
+
+Mob: 9372693389, 7972409656 |
+Email: hariharcarcarrier@gmail.com
+
+</div>
+
+
+</div>
+
+
+
+<!-- JS -->
+
+<script
+src="script.js">
+</script>
+
+
+</body>
+
+</html>
