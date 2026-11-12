@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <title>Locations | Harihar Cargo Carriers</title>
+
+    <link
+        rel="stylesheet"
+        href="locations.css"
+    >
+</head>
+
+<body>
+
+<div class="locations-page">
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header class="page-header">
+
+        <div class="page-title">
+
+            <div class="title-icon">
+                📍
+            </div>
+
+            <div class="title-content">
+
+                <h1>Locations</h1>
+
+                <p>
+                    Saved stopping points for trailers, cars and transport vehicles
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="location-count">
+            <span id="locationCount">0</span>
+            <span>Locations</span>
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH
+    ========================== -->
+
+    <div class="search-box">
+
+        <span class="search-icon">⌕</span>
+
+        <input
+            type="search"
+            id="searchInput"
+            autocomplete="off"
+            placeholder="Search location, city or facility..."
+        >
+
+        <button
+            type="button"
+            id="clearSearch"
+            class="clear-search"
+            aria-label="Clear search"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         LOCATIONS
+    ========================== -->
+
+    <main
+        id="locationsContainer"
+        class="locations-grid"
+    ></main>
+
+
+    <!-- =========================
+         NO RESULTS
+    ========================== -->
+
+    <div
+        id="noResults"
+        class="no-results hidden"
+    >
+
+        <div class="no-results-icon">
+            📍
+        </div>
+
+        <h3>No locations found</h3>
+
+        <p>
+            Try searching with another location or city.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script src="locations.js"></script>
+
+</body>
+
+</html>
