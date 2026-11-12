@@ -1,0 +1,949 @@
+/* =========================================================
+   HARIHAR CARGO CARRIERS
+   LOCATIONS PAGE
+========================================================= */
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+    --page-bg: #f5f7fa;
+    --card-bg: #ffffff;
+
+    --text: #111827;
+    --secondary: #6b7280;
+    --muted: #9ca3af;
+
+    --border: #e5e7eb;
+
+    --dark: #111827;
+
+    --green: #16803c;
+    --green-bg: #eaf8ef;
+}
+
+
+/* =========================================================
+   BODY
+========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+
+    background: var(--page-bg);
+
+    color: var(--text);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.locations-page {
+    width: 100%;
+
+    min-height: 100vh;
+
+    padding: 32px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.page-header {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 24px;
+}
+
+
+/* TITLE */
+
+.page-title {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    min-width: 0;
+}
+
+.title-icon {
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 13px;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.025);
+}
+
+.title-content {
+    min-width: 0;
+}
+
+.page-title h1 {
+    margin: 0;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+
+    font-weight: 750;
+
+    letter-spacing: -0.5px;
+}
+
+.page-title p {
+    margin: 7px 0 0;
+
+    color: var(--secondary);
+
+    font-size: 13px;
+
+    line-height: 1.45;
+}
+
+
+/* LOCATION COUNT */
+
+.location-count {
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 9px 14px;
+
+    background: #ffffff;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    color: #374151;
+
+    font-size: 12px;
+
+    font-weight: 650;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+    position: relative;
+
+    width: 100%;
+
+    max-width: 620px;
+
+    height: 47px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 0 13px;
+
+    margin-bottom: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1e5ea;
+
+    border-radius: 11px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+    border-color: #c9ced6;
+
+    box-shadow:
+        0 0 0 3px rgba(17, 24, 39, 0.045);
+}
+
+.search-icon {
+    color: #6b7280;
+
+    font-size: 21px;
+
+    line-height: 1;
+}
+
+.search-box input {
+    width: 100%;
+
+    min-width: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: var(--text);
+
+    font-family: inherit;
+
+    font-size: 13px;
+}
+
+.search-box input::placeholder {
+    color: #9ca3af;
+}
+
+.search-box input::-webkit-search-cancel-button {
+    display: none;
+}
+
+
+/* CLEAR BUTTON */
+
+.clear-search {
+    display: none;
+
+    width: 25px;
+    height: 25px;
+
+    flex: 0 0 25px;
+
+    padding: 0;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: #eef0f2;
+
+    color: #6b7280;
+
+    font-size: 18px;
+
+    line-height: 1;
+
+    cursor: pointer;
+}
+
+.clear-search.visible {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.locations-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(340px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* =========================================================
+   LOCATION CARD
+========================================================= */
+
+.location-card {
+    min-width: 0;
+
+    background: var(--card-bg);
+
+    border: 1px solid var(--border);
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
+}
+
+.location-card:hover {
+    transform: translateY(-2px);
+
+    border-color: #d9dde3;
+
+    box-shadow:
+        0 12px 34px rgba(0, 0, 0, 0.065);
+}
+
+
+/* =========================================================
+   CARD TOP
+========================================================= */
+
+.location-top {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+.location-icon {
+    width: 45px;
+    height: 45px;
+
+    flex: 0 0 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #fff4f4;
+
+    border-radius: 12px;
+
+    font-size: 19px;
+}
+
+.location-heading {
+    min-width: 0;
+}
+
+.location-name {
+    margin: 0;
+
+    color: var(--text);
+
+    font-size: 15.5px;
+
+    line-height: 1.35;
+
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+.location-city {
+    margin: 5px 0 0;
+
+    color: var(--secondary);
+
+    font-size: 12px;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   ADDRESS
+========================================================= */
+
+.location-address {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 8px;
+
+    margin-top: 17px;
+
+    padding: 11px;
+
+    background: #f8fafc;
+
+    border-radius: 9px;
+}
+
+.address-icon {
+    flex: 0 0 auto;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+.address-text {
+    margin: 0;
+
+    color: #4b5563;
+
+    font-size: 11.5px;
+
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================
+   FACILITIES
+========================================================= */
+
+.facilities {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 14px;
+}
+
+.facility {
+    min-height: 25px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    padding: 4px 8px;
+
+    background: #f3f4f6;
+
+    border-radius: 7px;
+
+    color: #4b5563;
+
+    font-size: 10px;
+
+    line-height: 1;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.location-actions {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        43px;
+
+    gap: 7px;
+
+    margin-top: 19px;
+}
+
+.location-actions button {
+    min-width: 0;
+
+    height: 41px;
+
+    border-radius: 9px;
+
+    border: 0;
+
+    font-family: inherit;
+
+    font-size: 10.5px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    white-space: nowrap;
+
+    transition:
+        transform 0.12s ease,
+        background 0.15s ease;
+}
+
+.location-actions button:active {
+    transform: scale(0.97);
+}
+
+
+/* MAP */
+
+.open-btn {
+    background: var(--dark);
+
+    color: #ffffff;
+}
+
+.open-btn:hover {
+    background: #000000;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp-btn {
+    background: var(--green-bg);
+
+    color: var(--green);
+}
+
+.whatsapp-btn:hover {
+    background: #d9f3e2;
+}
+
+
+/* SHARE */
+
+.share-btn {
+    background: #f3f4f6;
+
+    color: #374151;
+
+    font-size: 17px !important;
+}
+
+.share-btn:hover {
+    background: #e8eaed;
+}
+
+
+/* =========================================================
+   NO RESULTS
+========================================================= */
+
+.no-results {
+    width: 100%;
+
+    padding: 70px 20px;
+
+    text-align: center;
+
+    color: var(--secondary);
+}
+
+.no-results-icon {
+    margin-bottom: 10px;
+
+    font-size: 34px;
+}
+
+.no-results h3 {
+    margin: 0 0 6px;
+
+    color: #374151;
+
+    font-size: 16px;
+}
+
+.no-results p {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+.toast-message {
+    position: fixed;
+
+    left: 50%;
+
+    bottom: max(24px, env(safe-area-inset-bottom));
+
+    transform: translateX(-50%);
+
+    z-index: 99999;
+
+    width: max-content;
+
+    max-width: calc(100vw - 30px);
+
+    padding: 11px 17px;
+
+    background: #111827;
+
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.2);
+
+    animation:
+        toastIn 0.2s ease;
+}
+
+.toast-hide {
+    opacity: 0;
+
+    transition:
+        opacity 0.25s ease;
+}
+
+@keyframes toastIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translate(-50%, 10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translate(-50%, 0);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .locations-page {
+        padding: 24px;
+    }
+
+    .locations-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 650px) {
+
+    body {
+        background: #f5f7fa;
+    }
+
+    .locations-page {
+        width: 100%;
+
+        min-height: 100dvh;
+
+        padding:
+            17px
+            15px
+            calc(25px + env(safe-area-inset-bottom));
+    }
+
+
+    /* HEADER */
+
+    .page-header {
+        flex-direction: column;
+
+        gap: 13px;
+
+        margin-bottom: 17px;
+    }
+
+    .page-title {
+        width: 100%;
+
+        align-items: flex-start;
+
+        gap: 11px;
+    }
+
+    .title-icon {
+        width: 42px;
+        height: 42px;
+
+        flex-basis: 42px;
+
+        border-radius: 11px;
+
+        font-size: 18px;
+    }
+
+    .page-title h1 {
+        font-size: 22px;
+
+        letter-spacing: -0.3px;
+    }
+
+    .page-title p {
+        max-width: 310px;
+
+        margin-top: 5px;
+
+        font-size: 11.5px;
+
+        line-height: 1.45;
+    }
+
+    .location-count {
+        padding: 8px 12px;
+
+        font-size: 11.5px;
+
+        border-radius: 9px;
+    }
+
+
+    /* SEARCH */
+
+    .search-box {
+        max-width: none;
+
+        height: 46px;
+
+        padding: 0 12px;
+
+        margin-bottom: 17px;
+
+        border-radius: 10px;
+    }
+
+    .search-icon {
+        font-size: 19px;
+    }
+
+    .search-box input {
+        font-size: 13px;
+    }
+
+
+    /* GRID */
+
+    .locations-grid {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+    }
+
+
+    /* CARD */
+
+    .location-card {
+        padding: 15px;
+
+        border-radius: 13px;
+    }
+
+    .location-card:hover {
+        transform: none;
+
+        box-shadow: none;
+    }
+
+
+    /* TOP */
+
+    .location-top {
+        gap: 10px;
+    }
+
+    .location-icon {
+        width: 41px;
+        height: 41px;
+
+        flex-basis: 41px;
+
+        border-radius: 10px;
+
+        font-size: 17px;
+    }
+
+    .location-name {
+        font-size: 14.5px;
+    }
+
+    .location-city {
+        margin-top: 4px;
+
+        font-size: 11.5px;
+    }
+
+
+    /* ADDRESS */
+
+    .location-address {
+        margin-top: 14px;
+
+        padding: 10px;
+
+        border-radius: 8px;
+    }
+
+    .address-text {
+        font-size: 11px;
+
+        line-height: 1.5;
+    }
+
+
+    /* FACILITIES */
+
+    .facilities {
+        gap: 5px;
+
+        margin-top: 12px;
+    }
+
+    .facility {
+        min-height: 23px;
+
+        padding: 4px 7px;
+
+        font-size: 9.5px;
+    }
+
+
+    /* BUTTONS */
+
+    .location-actions {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            41px;
+
+        gap: 6px;
+
+        margin-top: 16px;
+    }
+
+    .location-actions button {
+        height: 41px;
+
+        border-radius: 8px;
+
+        font-size: 10px;
+
+        gap: 4px;
+    }
+
+    .share-btn {
+        font-size: 16px !important;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .locations-page {
+        padding-left: 12px;
+
+        padding-right: 12px;
+    }
+
+    .location-card {
+        padding: 13px;
+    }
+
+    .location-actions {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(0, 1fr)
+            39px;
+
+        gap: 5px;
+    }
+
+    .location-actions button {
+        font-size: 9px;
+
+        height: 40px;
+    }
+
+    .location-actions button span {
+        font-size: 11px;
+    }
+
+    .share-btn {
+        font-size: 15px !important;
+    }
+
+}
